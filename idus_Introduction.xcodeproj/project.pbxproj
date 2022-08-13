@@ -15,6 +15,7 @@
 		6831A39628A7A1030004F713 /* idus_IntroductionUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6831A39528A7A1030004F713 /* idus_IntroductionUITests.swift */; };
 		6831A39828A7A1030004F713 /* idus_IntroductionUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6831A39728A7A1030004F713 /* idus_IntroductionUITestsLaunchTests.swift */; };
 		6831A3A528A7A2100004F713 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6831A3A428A7A2100004F713 /* SearchViewController.swift */; };
+		6831A3A928A7ADF30004F713 /* LoadImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6831A3A828A7ADF30004F713 /* LoadImage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +48,7 @@
 		6831A39528A7A1030004F713 /* idus_IntroductionUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = idus_IntroductionUITests.swift; sourceTree = "<group>"; };
 		6831A39728A7A1030004F713 /* idus_IntroductionUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = idus_IntroductionUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		6831A3A428A7A2100004F713 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		6831A3A828A7ADF30004F713 /* LoadImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadImage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +99,7 @@
 		6831A37328A7A1020004F713 /* idus_Introduction */ = {
 			isa = PBXGroup;
 			children = (
+				6831A3A728A7ADCF0004F713 /* Network */,
 				6831A3A628A7A5F40004F713 /* Search */,
 				6831A37428A7A1020004F713 /* AppDelegate.swift */,
 				6831A37628A7A1020004F713 /* SceneDelegate.swift */,
@@ -130,6 +133,14 @@
 				6831A3A428A7A2100004F713 /* SearchViewController.swift */,
 			);
 			path = Search;
+			sourceTree = "<group>";
+		};
+		6831A3A728A7ADCF0004F713 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				6831A3A828A7ADF30004F713 /* LoadImage.swift */,
+			);
+			path = Network;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -263,6 +274,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6831A37528A7A1020004F713 /* AppDelegate.swift in Sources */,
+				6831A3A928A7ADF30004F713 /* LoadImage.swift in Sources */,
 				6831A3A528A7A2100004F713 /* SearchViewController.swift in Sources */,
 				6831A37728A7A1020004F713 /* SceneDelegate.swift in Sources */,
 			);

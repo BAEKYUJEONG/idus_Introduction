@@ -67,6 +67,8 @@ extension SearchViewController {
 extension SearchViewController: UISearchBarDelegate {
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        dismissKeyboard()
+        
         if let id = searchBar.text {
             viewModel.getDetail(id) { result in
                 switch result {
@@ -77,5 +79,9 @@ extension SearchViewController: UISearchBarDelegate {
                 }
             }
         }
+    }
+    
+    func dismissKeyboard() {
+        searchBar.resignFirstResponder()
     }
 }

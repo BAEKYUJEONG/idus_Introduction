@@ -11,7 +11,7 @@ final class SearchViewModel {
     
     private let detailAPIService = DetailAPIService()
     
-    func getDetail(_ id: Int, _ completion: @escaping (Result<Detail, APIError>) -> Void) {
+    func getDetail(_ id: String, _ completion: @escaping (Result<Detail, APIError>) -> Void) {
         detailAPIService.getDetail(id, completion)
     }
 }

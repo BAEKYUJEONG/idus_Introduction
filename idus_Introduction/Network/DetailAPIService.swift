@@ -17,7 +17,7 @@ enum APIError: Error {
 
 class DetailAPIService {
     
-    func getDetail(_ id: Int, _ completion: @escaping (Result<Detail, APIError>) -> Void) {
+    func getDetail(_ id: String, _ completion: @escaping (Result<Detail, APIError>) -> Void) {
         let request = URLRequest(url: EndPoint.getDetail(id).url)
         URLSession.request(.shared, endpoint: request, completion: completion)
     }

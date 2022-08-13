@@ -8,7 +8,8 @@
 import UIKit
 
 class SearchViewController: UIViewController {
-
+    
+    private var viewModel = SearchViewModel()
     private var iconImage: UIImageView = {
         let image = UIImageView()
         image.backgroundColor = .yellow
@@ -25,6 +26,7 @@ class SearchViewController: UIViewController {
         
         attribute()
         layout()
+        bind(viewModel)
     }
 }
 
@@ -56,13 +58,24 @@ extension SearchViewController {
             searchBar.trailingAnchor.constraint(equalTo: view.trailingAnchor),
         ])
     }
+    
+    private func bind(_ viewModel: SearchViewModel) {
+        self.viewModel = viewModel
+    }
 }
 
 extension SearchViewController: UISearchBarDelegate {
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         if let id = searchBar.text {
-            
+            viewModel.getDetail(id) { result in
+                switch result {
+                case .success(let detail):
+                    print(detail)
+                case .failure(let error):
+                    print(error.localizedDescription)
+                }
+            }
         }
     }
 }

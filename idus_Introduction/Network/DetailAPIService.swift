@@ -15,7 +15,7 @@ enum APIError: Error {
     case invalidData
 }
 
-class SearchAPIService {
+class DetailAPIService {
     
     func getDetail(_ id: Int, _ completion: @escaping (Result<Detail, APIError>) -> Void) {
         let request = URLRequest(url: EndPoint.getDetail(id).url)

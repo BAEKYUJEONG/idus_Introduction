@@ -8,7 +8,7 @@
 import Foundation
 
 enum EndPoint {
-    case getDetail(Int)
+    case getDetail(String)
 }
 
 extension EndPoint {

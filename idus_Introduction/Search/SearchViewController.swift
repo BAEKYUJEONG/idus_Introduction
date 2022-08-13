@@ -23,11 +23,15 @@ class SearchViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        attribute()
         layout()
     }
 }
 
 extension SearchViewController {
+    private func attribute() {
+        searchBar.delegate = self
+    }
     
     private func layout() {
         view.backgroundColor = .white
@@ -51,5 +55,14 @@ extension SearchViewController {
             searchBar.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             searchBar.trailingAnchor.constraint(equalTo: view.trailingAnchor),
         ])
+    }
+}
+
+extension SearchViewController: UISearchBarDelegate {
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        if let id = searchBar.text {
+            
+        }
     }
 }

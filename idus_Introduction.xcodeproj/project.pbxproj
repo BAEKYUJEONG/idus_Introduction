@@ -16,6 +16,7 @@
 		6831A39828A7A1030004F713 /* idus_IntroductionUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6831A39728A7A1030004F713 /* idus_IntroductionUITestsLaunchTests.swift */; };
 		6831A3A528A7A2100004F713 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6831A3A428A7A2100004F713 /* SearchViewController.swift */; };
 		6831A3A928A7ADF30004F713 /* LoadImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6831A3A828A7ADF30004F713 /* LoadImage.swift */; };
+		6831A3AB28A7AE4F0004F713 /* DetailAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6831A3AA28A7AE4F0004F713 /* DetailAPIService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		6831A39728A7A1030004F713 /* idus_IntroductionUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = idus_IntroductionUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		6831A3A428A7A2100004F713 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		6831A3A828A7ADF30004F713 /* LoadImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadImage.swift; sourceTree = "<group>"; };
+		6831A3AA28A7AE4F0004F713 /* DetailAPIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailAPIService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -139,6 +141,7 @@
 			isa = PBXGroup;
 			children = (
 				6831A3A828A7ADF30004F713 /* LoadImage.swift */,
+				6831A3AA28A7AE4F0004F713 /* DetailAPIService.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -274,6 +277,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6831A37528A7A1020004F713 /* AppDelegate.swift in Sources */,
+				6831A3AB28A7AE4F0004F713 /* DetailAPIService.swift in Sources */,
 				6831A3A928A7ADF30004F713 /* LoadImage.swift in Sources */,
 				6831A3A528A7A2100004F713 /* SearchViewController.swift in Sources */,
 				6831A37728A7A1020004F713 /* SceneDelegate.swift in Sources */,

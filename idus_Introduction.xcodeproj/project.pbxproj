@@ -97,9 +97,9 @@
 		6831A37328A7A1020004F713 /* idus_Introduction */ = {
 			isa = PBXGroup;
 			children = (
+				6831A3A628A7A5F40004F713 /* Search */,
 				6831A37428A7A1020004F713 /* AppDelegate.swift */,
 				6831A37628A7A1020004F713 /* SceneDelegate.swift */,
-				6831A3A428A7A2100004F713 /* SearchViewController.swift */,
 				6831A37D28A7A1030004F713 /* Assets.xcassets */,
 				6831A37F28A7A1030004F713 /* LaunchScreen.storyboard */,
 				6831A38228A7A1030004F713 /* Info.plist */,
@@ -122,6 +122,14 @@
 				6831A39728A7A1030004F713 /* idus_IntroductionUITestsLaunchTests.swift */,
 			);
 			path = idus_IntroductionUITests;
+			sourceTree = "<group>";
+		};
+		6831A3A628A7A5F40004F713 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				6831A3A428A7A2100004F713 /* SearchViewController.swift */,
+			);
+			path = Search;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

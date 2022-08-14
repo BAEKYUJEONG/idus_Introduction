@@ -25,4 +25,7 @@ struct Results: Decodable {
     let trackContentRating: String
     let description: String
     let trackName: String
+    
+    let version: String
+    let releaseNotes: String
 }

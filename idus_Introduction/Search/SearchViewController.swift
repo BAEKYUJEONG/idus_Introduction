@@ -74,9 +74,11 @@ extension SearchViewController: UISearchBarDelegate {
                 switch result {
                 case .success(let detail):
                     print(detail)
-                    DispatchQueue.main.async {
-                        let vc = DetailViewController()
-                        self.navigationController?.pushViewController(vc, animated: true)
+                    if !detail.detailResult.isEmpty {
+                        DispatchQueue.main.async {
+                            let vc = DetailViewController()
+                            self.navigationController?.pushViewController(vc, animated: true)
+                        }
                     }
                 case .failure(let error):
                     print(error.localizedDescription)

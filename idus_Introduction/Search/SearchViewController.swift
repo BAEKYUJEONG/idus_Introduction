@@ -26,7 +26,7 @@ class SearchViewController: UIViewController {
         
         attribute()
         layout()
-        bind(viewModel)
+        dataBinding()
     }
 }
 
@@ -59,14 +59,15 @@ extension SearchViewController {
         ])
     }
     
-    private func bind(_ viewModel: SearchViewModel) {
-        self.viewModel = viewModel
-    }
-    
-    private func dataBindToSearchVC() {
-        self.viewModel.loadingSucceed = {
-            let vc = DetailViewController()
-            self.navigationController?.pushViewController(vc, animated: true)
+    private func dataBinding() {
+        self.viewModel.loadingSucceed = { [weak self] in
+            DispatchQueue.main.async {
+                let vc = DetailViewController()
+                guard let self = self else { return }
+                guard let detail = self.viewModel.passDetailData() else { return }
+                vc.getViewModelData(detail)
+                self.navigationController?.pushViewController(vc, animated: true)
+            }
         }
     }
 }

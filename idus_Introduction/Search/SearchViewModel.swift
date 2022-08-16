@@ -26,4 +26,7 @@ final class SearchViewModel {
         }
     }
     
+    func passDetailData() -> Detail? {
+        return detailData
+    }
 }

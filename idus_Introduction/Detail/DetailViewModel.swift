@@ -11,7 +11,8 @@ class DetailViewModel {
     
     private var detailData: Detail?
     
-    func getDetailDataFromSearchVM(_ detail: Detail) {
+    func getDetailData(_ detail: Detail) {
         detailData = detail
+        print(detailData)
     }
 }

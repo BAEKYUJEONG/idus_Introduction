@@ -18,11 +18,16 @@ class DetailViewController: UIViewController {
     }()
     private let contentView = UIView()
     private let contentStackView = ContentStackView()
+    var viewModel = DetailViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         layout()
+    }
+    
+    func getViewModelData(_ detail: Detail) {
+        viewModel.getDetailData(detail)
     }
 }
 

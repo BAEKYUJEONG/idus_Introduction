@@ -11,9 +11,11 @@ class SearchViewController: UIViewController {
     
     private var viewModel = SearchViewModel()
     private var iconImage: UIImageView = {
-        let image = UIImageView()
-        image.backgroundColor = .yellow
-        return image
+        let imageView = UIImageView()
+        imageView.image = UIImage(named: "idus_icon")
+        imageView.clipsToBounds = true
+        imageView.layer.cornerRadius = 30
+        return imageView
     }()
     private var searchBar: UISearchBar = {
         let searchBar = UISearchBar()
@@ -69,6 +71,11 @@ extension SearchViewController {
                 self.navigationController?.pushViewController(vc, animated: true)
             }
         }
+        
+        self.viewModel.loadingFailed = { [weak self] error in
+            guard let self = self else { return }
+            self.alert(title: "로딩 실패", message: "로딩에 실패하였습니다.")
+        }
     }
 }
 
@@ -78,7 +85,12 @@ extension SearchViewController: UISearchBarDelegate {
         dismissKeyboard()
         
         if let id = searchBar.text {
-            viewModel.getDetail(id)
+            if id != "872469884" {
+                self.alert(title: "아이디 오류", message: "아이디가 잘못되었습니다.")
+            } else {
+                viewModel.getDetail(id)
+            }
+            
         }
     }
     

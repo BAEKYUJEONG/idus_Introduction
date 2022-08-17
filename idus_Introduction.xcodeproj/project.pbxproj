@@ -27,6 +27,7 @@
 		686E107028AB5530000497E4 /* PreviewCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 686E106F28AB5530000497E4 /* PreviewCollectionViewCell.swift */; };
 		686E107428AB6B80000497E4 /* DetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 686E107328AB6B80000497E4 /* DetailViewModel.swift */; };
 		686E107828ACBBD9000497E4 /* DescriptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 686E107728ACBBD9000497E4 /* DescriptionView.swift */; };
+		686E107F28AD011F000497E4 /* UIViewController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 686E107E28AD011F000497E4 /* UIViewController+.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,6 +72,7 @@
 		686E106F28AB5530000497E4 /* PreviewCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewCollectionViewCell.swift; sourceTree = "<group>"; };
 		686E107328AB6B80000497E4 /* DetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModel.swift; sourceTree = "<group>"; };
 		686E107728ACBBD9000497E4 /* DescriptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionView.swift; sourceTree = "<group>"; };
+		686E107E28AD011F000497E4 /* UIViewController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -184,6 +186,7 @@
 			children = (
 				6831A3B428A7BD020004F713 /* URL+.swift */,
 				6831A3B128A7BA760004F713 /* UrlSession+.swift */,
+				686E107E28AD011F000497E4 /* UIViewController+.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -348,6 +351,7 @@
 				6831A3B728A7C1A20004F713 /* SearchViewModel.swift in Sources */,
 				6831A3B028A7B9690004F713 /* EndPoint.swift in Sources */,
 				686E107428AB6B80000497E4 /* DetailViewModel.swift in Sources */,
+				686E107F28AD011F000497E4 /* UIViewController+.swift in Sources */,
 				686E107028AB5530000497E4 /* PreviewCollectionViewCell.swift in Sources */,
 				686E106E28AA609D000497E4 /* ContentStackView.swift in Sources */,
 				6831A3B228A7BA760004F713 /* UrlSession+.swift in Sources */,

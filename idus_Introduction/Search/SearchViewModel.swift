@@ -21,6 +21,7 @@ final class SearchViewModel {
                 self.detailData = detail
                 self.loadingSucceed()
             case .failure(let error):
+                print("fail")
                 self.loadingFailed(error)
             }
         }

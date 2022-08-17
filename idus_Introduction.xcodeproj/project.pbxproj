@@ -25,6 +25,7 @@
 		6831A3BA28A80DE00004F713 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6831A3B928A80DE00004F713 /* DetailViewController.swift */; };
 		686E106E28AA609D000497E4 /* ContentStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 686E106D28AA609D000497E4 /* ContentStackView.swift */; };
 		686E107028AB5530000497E4 /* PriviewCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 686E106F28AB5530000497E4 /* PriviewCollectionViewCell.swift */; };
+		686E107428AB6B80000497E4 /* DetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 686E107328AB6B80000497E4 /* DetailViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +68,7 @@
 		6831A3B928A80DE00004F713 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		686E106D28AA609D000497E4 /* ContentStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentStackView.swift; sourceTree = "<group>"; };
 		686E106F28AB5530000497E4 /* PriviewCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriviewCollectionViewCell.swift; sourceTree = "<group>"; };
+		686E107328AB6B80000497E4 /* DetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -190,6 +192,7 @@
 				6831A3B928A80DE00004F713 /* DetailViewController.swift */,
 				686E106D28AA609D000497E4 /* ContentStackView.swift */,
 				686E106F28AB5530000497E4 /* PriviewCollectionViewCell.swift */,
+				686E107328AB6B80000497E4 /* DetailViewModel.swift */,
 			);
 			path = Detail;
 			sourceTree = "<group>";
@@ -333,6 +336,7 @@
 				6831A3A528A7A2100004F713 /* SearchViewController.swift in Sources */,
 				6831A3B728A7C1A20004F713 /* SearchViewModel.swift in Sources */,
 				6831A3B028A7B9690004F713 /* EndPoint.swift in Sources */,
+				686E107428AB6B80000497E4 /* DetailViewModel.swift in Sources */,
 				686E107028AB5530000497E4 /* PriviewCollectionViewCell.swift in Sources */,
 				686E106E28AA609D000497E4 /* ContentStackView.swift in Sources */,
 				6831A3B228A7BA760004F713 /* UrlSession+.swift in Sources */,

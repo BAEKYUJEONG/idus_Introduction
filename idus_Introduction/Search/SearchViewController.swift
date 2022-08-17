@@ -26,7 +26,7 @@ class SearchViewController: UIViewController {
         
         attribute()
         layout()
-        bind(viewModel)
+        dataBinding()
     }
 }
 
@@ -59,8 +59,16 @@ extension SearchViewController {
         ])
     }
     
-    private func bind(_ viewModel: SearchViewModel) {
-        self.viewModel = viewModel
+    private func dataBinding() {
+        self.viewModel.loadingSucceed = { [weak self] in
+            DispatchQueue.main.async {
+                let vc = DetailViewController()
+                guard let self = self else { return }
+                guard let detail = self.viewModel.passDetailData() else { return }
+                vc.getViewModelData(detail)
+                self.navigationController?.pushViewController(vc, animated: true)
+            }
+        }
     }
 }
 
@@ -70,20 +78,7 @@ extension SearchViewController: UISearchBarDelegate {
         dismissKeyboard()
         
         if let id = searchBar.text {
-            viewModel.getDetail(id) { result in
-                switch result {
-                case .success(let detail):
-                    print(detail)
-                    if !detail.detailResult.isEmpty {
-                        DispatchQueue.main.async {
-                            let vc = DetailViewController()
-                            self.navigationController?.pushViewController(vc, animated: true)
-                        }
-                    }
-                case .failure(let error):
-                    print(error.localizedDescription)
-                }
-            }
+            viewModel.getDetail(id)
         }
     }
     

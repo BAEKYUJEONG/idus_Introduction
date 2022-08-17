@@ -22,6 +22,7 @@ class ContentStackView: UIStackView {
         return collectView
     }()
     private var descriptionView = DescriptionView()
+    private var descriptionTableView = UITableView()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -75,7 +76,7 @@ class ContentStackView: UIStackView {
             previewCollectionView.heightAnchor.constraint(equalToConstant: 400),
             
             descriptionView.widthAnchor.constraint(equalTo: self.widthAnchor),
-            descriptionView.heightAnchor.constraint(equalToConstant: 500)
+            descriptionView.heightAnchor.constraint(equalToConstant: 200)
         ])
     }
 }

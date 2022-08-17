@@ -43,7 +43,6 @@ class PreviewCollectionViewCell: UICollectionViewCell, ReusableCell {
             case .success(let image):
                 DispatchQueue.main.async {
                     self.previewImage.image = image
-                    print("here", screenshotArr[indexPath.row])
                 }
             case .failure(let error):
                 print(error.localizedDescription)

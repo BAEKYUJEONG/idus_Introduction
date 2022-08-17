@@ -14,6 +14,7 @@ class DetailViewController: UIViewController {
     
     private let contentScrollView: UIScrollView = {
         let scrollView = UIScrollView()
+        scrollView.contentSize.height = 1500
         scrollView.backgroundColor = .white
         scrollView.showsVerticalScrollIndicator = false
         return scrollView
@@ -25,6 +26,29 @@ class DetailViewController: UIViewController {
         stackView.axis = .vertical
         stackView.alignment = .center
         return stackView
+    }()
+    
+    private var appView: UIView = {
+        var uiView = UIView()
+        uiView.backgroundColor = .brown
+        return uiView
+    }()
+    
+    private var appImage: UIImageView = {
+        var imageView = UIImageView()
+        return imageView
+    }()
+    
+    private var redView: UIView = {
+        var redView = UIView()
+        redView.backgroundColor = .yellow
+        return redView
+    }()
+    
+    private var blueView: UIView = {
+        var redView = UIView()
+        redView.backgroundColor = .blue
+        return redView
     }()
     
     private var previewCollectionView: UICollectionView = {
@@ -42,6 +66,7 @@ class DetailViewController: UIViewController {
 //        initialize()
         attribute()
         layout()
+        setIconImage()
     }
     
     func getViewModelData(_ detail: Detail) {
@@ -66,12 +91,21 @@ extension DetailViewController {
         
         view.addSubview(contentScrollView)
         contentScrollView.addSubview(contentStackView)
+        
+        contentStackView.addArrangedSubview(appView)
+        contentStackView.addArrangedSubview(redView)
+        contentStackView.addArrangedSubview(blueView)
         contentStackView.addArrangedSubview(previewCollectionView)
+        
+        appView.addSubview(appImage)
         
         [
             contentScrollView,
             contentStackView,
-            previewCollectionView
+            redView,
+            blueView,
+            previewCollectionView,
+            appImage
         ].forEach {
             $0.translatesAutoresizingMaskIntoConstraints = false
         }
@@ -88,8 +122,42 @@ extension DetailViewController {
             contentStackView.trailingAnchor.constraint(equalTo: contentScrollView.trailingAnchor),
             contentStackView.bottomAnchor.constraint(equalTo: contentScrollView.bottomAnchor),
             
-            previewCollectionView.widthAnchor.constraint(equalToConstant: 300),
+            appView.widthAnchor.constraint(equalTo: contentStackView.widthAnchor),
+            appView.heightAnchor.constraint(equalToConstant: 140),
+            
+//            redView.widthAnchor.constraint(equalToConstant: 300),
+//            redView.heightAnchor.constraint(equalToConstant: 300),
+//
+//            blueView.widthAnchor.constraint(equalToConstant: 300),
+//            blueView.heightAnchor.constraint(equalToConstant: 300),
+
+            previewCollectionView.widthAnchor.constraint(equalTo: contentStackView.widthAnchor),
             previewCollectionView.heightAnchor.constraint(equalToConstant: 500)
+        ])
+    }
+    
+    private func setIconImage() {
+        LoadImage().loadImage("https://is5-ssl.mzstatic.com/image/thumb/Purple112/v4/f9/6e/ed/f96eed72-72d6-4354-97fa-ee649c21832d/AppIcon-1x_U007emarketing-0-6-0-sRGB-85-220.png/100x100bb.jpg") { result in
+            switch result {
+            case .success(let image):
+                DispatchQueue.main.async {
+                    self.appImage.image = image
+                }
+            case .failure(_):
+                print("fail")
+            }
+        }
+        self.viewModel.imageSucceed = { image in
+            self.appImage.image = image
+        }
+        
+        appImage.layer.cornerRadius = 30
+        
+        NSLayoutConstraint.activate([
+            appImage.topAnchor.constraint(equalTo: appView.topAnchor, constant: 10),
+            appImage.leadingAnchor.constraint(equalTo: appView.leadingAnchor, constant: 10),
+            appImage.bottomAnchor.constraint(equalTo: appView.bottomAnchor, constant: 10),
+            appImage.heightAnchor.constraint(equalTo: appImage.widthAnchor)
         ])
     }
 }

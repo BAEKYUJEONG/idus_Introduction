@@ -56,10 +56,10 @@ class ContentStackView: UIStackView {
     private func layout() {
         appView.backgroundColor = .yellow
         [
-//            appView,
-//            newFuncView,
+            appView,
+            newFuncView,
             previewCollectionView,
-//            descriptionView
+            descriptionView
         ].forEach {
             $0.translatesAutoresizingMaskIntoConstraints = false
             self.addArrangedSubview($0)

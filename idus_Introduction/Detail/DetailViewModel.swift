@@ -31,8 +31,11 @@ class DetailViewModel {
                 iconImage = UIImage(systemName: "x.square")!
             }
         }
-        print(iconImage)
         return iconImage
+    }
+    
+    func getDescription() -> String {
+        return detailData?.detailResult[0].description ?? "text"
     }
     
     func getScreenShot() -> [String]? {

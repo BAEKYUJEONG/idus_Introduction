@@ -14,19 +14,12 @@ class DetailViewController: UIViewController {
     
     private let contentScrollView: UIScrollView = {
         let scrollView = UIScrollView()
-        scrollView.contentSize.height = 1500
         scrollView.backgroundColor = .white
         scrollView.showsVerticalScrollIndicator = false
         return scrollView
     }()
     
-    private var contentStackView: UIStackView = {
-        var stackView = UIStackView()
-        stackView.distribution = .equalSpacing
-        stackView.axis = .vertical
-        stackView.alignment = .center
-        return stackView
-    }()
+    private var contentStackView = ContentStackView()
     
     private var appView: UIView = {
         var uiView = UIView()
@@ -37,18 +30,6 @@ class DetailViewController: UIViewController {
     private var appImage: UIImageView = {
         var imageView = UIImageView()
         return imageView
-    }()
-    
-    private var redView: UIView = {
-        var redView = UIView()
-        redView.backgroundColor = .yellow
-        return redView
-    }()
-    
-    private var blueView: UIView = {
-        var redView = UIView()
-        redView.backgroundColor = .blue
-        return redView
     }()
     
     private var previewCollectionView: UICollectionView = {
@@ -63,7 +44,7 @@ class DetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        initialize()
+        initialize()
         attribute()
         layout()
         setIconImage()
@@ -76,9 +57,9 @@ class DetailViewController: UIViewController {
 
 extension DetailViewController {
     
-//    private func initialize() {
-//        contentStackView = ContentStackView(viewModel)
-//    }
+    private func initialize() {
+        contentStackView = ContentStackView(viewModel)
+    }
 
     private func attribute() {
         previewCollectionView.delegate = self
@@ -93,8 +74,6 @@ extension DetailViewController {
         contentScrollView.addSubview(contentStackView)
         
         contentStackView.addArrangedSubview(appView)
-        contentStackView.addArrangedSubview(redView)
-        contentStackView.addArrangedSubview(blueView)
         contentStackView.addArrangedSubview(previewCollectionView)
         
         appView.addSubview(appImage)
@@ -102,8 +81,6 @@ extension DetailViewController {
         [
             contentScrollView,
             contentStackView,
-            redView,
-            blueView,
             previewCollectionView,
             appImage
         ].forEach {
@@ -124,12 +101,6 @@ extension DetailViewController {
             
             appView.widthAnchor.constraint(equalTo: contentStackView.widthAnchor),
             appView.heightAnchor.constraint(equalToConstant: 140),
-            
-//            redView.widthAnchor.constraint(equalToConstant: 300),
-//            redView.heightAnchor.constraint(equalToConstant: 300),
-//
-//            blueView.widthAnchor.constraint(equalToConstant: 300),
-//            blueView.heightAnchor.constraint(equalToConstant: 300),
 
             previewCollectionView.widthAnchor.constraint(equalTo: contentStackView.widthAnchor),
             previewCollectionView.heightAnchor.constraint(equalToConstant: 500)

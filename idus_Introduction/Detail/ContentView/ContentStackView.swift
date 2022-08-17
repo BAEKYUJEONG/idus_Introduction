@@ -9,6 +9,8 @@ import UIKit
 
 class ContentStackView: UIStackView {
     
+    private var viewModel = DetailViewModel()
+    
     private var appView = UIView()
     private var newFuncView = UIView()
     private var previewCollectionView: UICollectionView = {
@@ -19,8 +21,7 @@ class ContentStackView: UIStackView {
         let collectView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         return collectView
     }()
-    private var descriptionView = UIView()
-    private var viewModel = DetailViewModel()
+    private var descriptionView = DescriptionView()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -36,6 +37,7 @@ class ContentStackView: UIStackView {
         self.viewModel = viewModel
         
         configureProperties()
+        initialize()
         attribute()
         layout()
     }
@@ -47,6 +49,10 @@ class ContentStackView: UIStackView {
         self.spacing = 0
     }
     
+    private func initialize() {
+        descriptionView = DescriptionView(viewModel)
+    }
+    
     private func attribute() {
         previewCollectionView.delegate = self
         previewCollectionView.dataSource = self
@@ -54,7 +60,6 @@ class ContentStackView: UIStackView {
     }
     
     private func layout() {
-        appView.backgroundColor = .yellow
         [
             appView,
             newFuncView,
@@ -67,7 +72,10 @@ class ContentStackView: UIStackView {
         
         NSLayoutConstraint.activate([
             previewCollectionView.widthAnchor.constraint(equalTo: self.widthAnchor),
-            previewCollectionView.heightAnchor.constraint(equalToConstant: 400)
+            previewCollectionView.heightAnchor.constraint(equalToConstant: 400),
+            
+            descriptionView.widthAnchor.constraint(equalTo: self.widthAnchor),
+            descriptionView.heightAnchor.constraint(equalToConstant: 500)
         ])
     }
 }

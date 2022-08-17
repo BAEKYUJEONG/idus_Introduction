@@ -122,6 +122,7 @@ extension DetailViewController {
             self.appImage.image = image
         }
         
+        appImage.clipsToBounds = true
         appImage.layer.cornerRadius = 30
         
         NSLayoutConstraint.activate([

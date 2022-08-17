@@ -15,7 +15,6 @@ struct Detail: Decodable {
     }
 }
 
-
 struct Results: Decodable {
     let screenshotUrls: [String]
     let artworkUrl100: String

@@ -50,7 +50,7 @@ class ContentStackView: UIStackView {
     private func attribute() {
         previewCollectionView.delegate = self
         previewCollectionView.dataSource = self
-        previewCollectionView.register(cellType: PriviewCollectionViewCell.self)
+        previewCollectionView.register(cellType: PreviewCollectionViewCell.self)
     }
     
     private func layout() {
@@ -67,7 +67,7 @@ class ContentStackView: UIStackView {
         
         NSLayoutConstraint.activate([
             previewCollectionView.widthAnchor.constraint(equalTo: self.widthAnchor),
-            previewCollectionView.heightAnchor.constraint(equalToConstant: 500)
+            previewCollectionView.heightAnchor.constraint(equalToConstant: 400)
         ])
     }
 }
@@ -79,7 +79,7 @@ extension ContentStackView: UICollectionViewDelegate, UICollectionViewDataSource
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = previewCollectionView.dequeueReusableCell(cellType: PriviewCollectionViewCell.self, indexPath: indexPath)
+        let cell = previewCollectionView.dequeueReusableCell(cellType: PreviewCollectionViewCell.self, indexPath: indexPath)
         
         cell.setup(indexPath, viewModel.getScreenShot())
         

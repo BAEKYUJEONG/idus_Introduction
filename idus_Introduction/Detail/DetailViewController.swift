@@ -19,12 +19,28 @@ class DetailViewController: UIViewController {
         return scrollView
     }()
     
-    private var contentStackView = ContentStackView()
+    private var contentStackView: UIStackView = {
+        var stackView = UIStackView()
+        stackView.distribution = .equalSpacing
+        stackView.axis = .vertical
+        stackView.alignment = .center
+        return stackView
+    }()
+    
+    private var previewCollectionView: UICollectionView = {
+        let layout = UICollectionViewFlowLayout()
+        layout.itemSize = CGSize(width: 250, height: 400)
+        layout.scrollDirection = .horizontal
+        
+        let collectView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        return collectView
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        initialize()
+//        initialize()
+        attribute()
         layout()
     }
     
@@ -35,20 +51,27 @@ class DetailViewController: UIViewController {
 
 extension DetailViewController {
     
-    private func initialize() {
-        contentStackView = ContentStackView(viewModel)
-    }
+//    private func initialize() {
+//        contentStackView = ContentStackView(viewModel)
+//    }
 
+    private func attribute() {
+        previewCollectionView.delegate = self
+        previewCollectionView.dataSource = self
+        previewCollectionView.register(cellType: PreviewCollectionViewCell.self)
+    }
+    
     private func layout() {
-        contentScrollView.contentSize = CGSize(width: view.frame.size.width, height: 15000)
         contentScrollView.isUserInteractionEnabled = false
         
         view.addSubview(contentScrollView)
         contentScrollView.addSubview(contentStackView)
+        contentStackView.addArrangedSubview(previewCollectionView)
         
         [
             contentScrollView,
-            contentStackView
+            contentStackView,
+            previewCollectionView
         ].forEach {
             $0.translatesAutoresizingMaskIntoConstraints = false
         }
@@ -63,7 +86,25 @@ extension DetailViewController {
             contentStackView.topAnchor.constraint(equalTo: contentScrollView.topAnchor),
             contentStackView.leadingAnchor.constraint(equalTo: contentScrollView.leadingAnchor),
             contentStackView.trailingAnchor.constraint(equalTo: contentScrollView.trailingAnchor),
-            contentStackView.bottomAnchor.constraint(equalTo: contentScrollView.bottomAnchor)
+            contentStackView.bottomAnchor.constraint(equalTo: contentScrollView.bottomAnchor),
+            
+            previewCollectionView.widthAnchor.constraint(equalToConstant: 300),
+            previewCollectionView.heightAnchor.constraint(equalToConstant: 500)
         ])
+    }
+}
+
+extension DetailViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return viewModel.screenShotCount()
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = previewCollectionView.dequeueReusableCell(cellType: PreviewCollectionViewCell.self, indexPath: indexPath)
+        
+        cell.setup(indexPath, viewModel.getScreenShot())
+        
+        return cell
     }
 }

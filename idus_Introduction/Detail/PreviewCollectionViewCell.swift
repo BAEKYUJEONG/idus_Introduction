@@ -1,5 +1,5 @@
 //
-//  PriviewCollectionViewCell.swift
+//  PreviewCollectionViewCell.swift
 //  idus_Introduction
 //
 //  Created by 백유정 on 2022/08/16.
@@ -28,9 +28,9 @@ extension UICollectionView {
     }
 }
 
-class PriviewCollectionViewCell: UICollectionViewCell, ReusableCell {
+class PreviewCollectionViewCell: UICollectionViewCell, ReusableCell {
     
-    private let priviewImage = UIImageView()
+    private let previewImage = UIImageView()
     
     func setup(_ indexPath: IndexPath, _ screenshotArr: [String]?) {
         layout()
@@ -42,7 +42,7 @@ class PriviewCollectionViewCell: UICollectionViewCell, ReusableCell {
             switch result {
             case .success(let image):
                 DispatchQueue.main.async {
-                    self.priviewImage.image = image
+                    self.previewImage.image = image
                     print("here", screenshotArr[indexPath.row])
                 }
             case .failure(let error):
@@ -52,22 +52,22 @@ class PriviewCollectionViewCell: UICollectionViewCell, ReusableCell {
     }
 }
 
-extension PriviewCollectionViewCell {
+extension PreviewCollectionViewCell {
     func layout() {
-        priviewImage.isUserInteractionEnabled = false
+        previewImage.isUserInteractionEnabled = false
         
         [
-            priviewImage
+            previewImage
         ].forEach {
             addSubview($0)
             $0.translatesAutoresizingMaskIntoConstraints = false
         }
         
         NSLayoutConstraint.activate([
-            priviewImage.topAnchor.constraint(equalTo: self.topAnchor),
-            priviewImage.leadingAnchor.constraint(equalTo: self.leadingAnchor),
-            priviewImage.trailingAnchor.constraint(equalTo: self.trailingAnchor),
-            priviewImage.bottomAnchor.constraint(equalTo: self.bottomAnchor),
+            previewImage.topAnchor.constraint(equalTo: self.topAnchor),
+            previewImage.leadingAnchor.constraint(equalTo: self.leadingAnchor),
+            previewImage.trailingAnchor.constraint(equalTo: self.trailingAnchor),
+            previewImage.bottomAnchor.constraint(equalTo: self.bottomAnchor),
         ])
     }
 }

@@ -13,31 +13,39 @@ class ContentStackView: UIStackView {
     private var newFuncView = UIView()
     private var previewCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
+        layout.itemSize = CGSize(width: 250, height: 400)
         layout.scrollDirection = .horizontal
         
-        let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        return cv
+        let collectView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        return collectView
     }()
     private var descriptionView = UIView()
+    private var viewModel = DetailViewModel()
     
-    init() {
-        super.init(frame: .zero)
-        
-        configureProperties()
-        layout()
+    override init(frame: CGRect) {
+        super.init(frame: frame)
     }
     
     required init(coder: NSCoder) {
+        super.init(coder: coder)
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    init(_ viewModel: DetailViewModel) {
+        super.init(frame: .zero)
+        self.viewModel = viewModel
+        
+        configureProperties()
+        attribute()
+        layout()
     }
     
     private func configureProperties() {
         self.axis = .vertical
-        self.distribution = .fillEqually
-        self.alignment = .fill
+        self.distribution = .equalSpacing
+        self.alignment = .center
         self.spacing = 0
     }
-    
     
     private func attribute() {
         previewCollectionView.delegate = self
@@ -48,29 +56,37 @@ class ContentStackView: UIStackView {
     private func layout() {
         appView.backgroundColor = .yellow
         [
-            appView,
-            newFuncView,
+//            appView,
+//            newFuncView,
             previewCollectionView,
-            descriptionView
+//            descriptionView
         ].forEach {
             $0.translatesAutoresizingMaskIntoConstraints = false
             self.addArrangedSubview($0)
         }
+        
+        NSLayoutConstraint.activate([
+            previewCollectionView.widthAnchor.constraint(equalTo: self.widthAnchor),
+            previewCollectionView.heightAnchor.constraint(equalToConstant: 500)
+        ])
     }
 }
 
 extension ContentStackView: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        /// priview 갯수를 받아서 할 지 고정값이니 고정 값을 넣을 지
-        return 9
+        return viewModel.screenShotCount()
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = previewCollectionView.dequeueReusableCell(cellType: PriviewCollectionViewCell.self, indexPath: indexPath)
         
-        cell.setup()
+        cell.setup(indexPath, viewModel.getScreenShot())
         
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        print(indexPath)
     }
 }

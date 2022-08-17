@@ -32,14 +32,30 @@ class PriviewCollectionViewCell: UICollectionViewCell, ReusableCell {
     
     private let priviewImage = UIImageView()
     
-    func setup() {
-        backgroundColor = .cyan
+    func setup(_ indexPath: IndexPath, _ screenshotArr: [String]?) {
         layout()
+        loadImage(indexPath, screenshotArr ?? [])
+    }
+    
+    private func loadImage(_ indexPath: IndexPath, _ screenshotArr: [String]) {
+        LoadImage().loadImage(screenshotArr[indexPath.row]) { result in
+            switch result {
+            case .success(let image):
+                DispatchQueue.main.async {
+                    self.priviewImage.image = image
+                    print("here", screenshotArr[indexPath.row])
+                }
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
     }
 }
 
 extension PriviewCollectionViewCell {
     func layout() {
+        priviewImage.isUserInteractionEnabled = false
+        
         [
             priviewImage
         ].forEach {

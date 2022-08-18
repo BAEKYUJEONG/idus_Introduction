@@ -55,7 +55,7 @@ extension TitleTableViewCell {
     
     private func setupIconImage(_ viewModel: DetailViewModel) {
         appIconImage.clipsToBounds = true
-        appIconImage.layer.cornerRadius = 24
+        appIconImage.layer.cornerRadius = 10
         
         viewModel.getAppIconImage { image in
             DispatchQueue.main.async {
@@ -71,6 +71,7 @@ extension TitleTableViewCell {
     
     private func setupArtistName(_ viewModel: DetailViewModel) {
         artistName.text = viewModel.getArtistName()
+        artistName.textColor = .systemGray
         artistName.font = UIFont.systemFont(ofSize: 16)
     }
 }

@@ -22,20 +22,15 @@ class PreviewCollectionViewCell: UICollectionViewCell, ReusableCell {
     
     private let previewImage = UIImageView()
     
-    func setup(_ indexPath: IndexPath, _ screenshotArr: [String]?) {
+    func setup(_ indexPath: IndexPath, _ viewModel: DetailViewModel) {
         layout()
-        loadImage(indexPath, screenshotArr ?? [])
+        loadImage(indexPath, viewModel)
     }
     
-    private func loadImage(_ indexPath: IndexPath, _ screenshotArr: [String]) {
-        LoadImage().loadImage(screenshotArr[indexPath.row]) { result in
-            switch result {
-            case .success(let image):
-                DispatchQueue.main.async {
-                    self.previewImage.image = image
-                }
-            case .failure(let error):
-                print(error.localizedDescription)
+    private func loadImage(_ indexPath: IndexPath, _ viewModel: DetailViewModel) {
+        viewModel.fetchScreenShot(indexPath) { image in
+            DispatchQueue.main.async {
+                self.previewImage.image = image
             }
         }
     }

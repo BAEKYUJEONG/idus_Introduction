@@ -8,7 +8,7 @@
 import UIKit
 
 // id: 872469884
-class DetailViewController: UIViewController {
+class DetailViewController: UIViewController{
 
     var viewModel = DetailViewModel()
     
@@ -87,6 +87,7 @@ extension DetailViewController: UITableViewDelegate, UITableViewDataSource {
         } else {
             let cell = contentTableView.dequeueReusableCell(withIdentifier: "preview", for: indexPath) as! PreviewTableViewCell
             cell.setup(viewModel)
+            cell.delegate = self
             return cell
         }
     }
@@ -112,5 +113,12 @@ extension DetailViewController: FoldableDelegate {
     
     func tapFoldableButton(sender: UIButton) {
         
+    }
+}
+
+extension DetailViewController: ModalDelegate {
+    
+    func presentModal(_ vc: UIViewController) {
+        self.present(vc, animated: true)
     }
 }

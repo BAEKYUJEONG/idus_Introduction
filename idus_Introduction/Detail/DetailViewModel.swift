@@ -11,7 +11,6 @@ class DetailViewModel {
     
     private var detailData: Detail?
     private var screenshotArr: [String] = []
-    var imageSucceed: (_ image: UIImage) -> () = { image in }
     
     func getDetailData(_ detail: Detail) {
         detailData = detail
@@ -43,10 +42,23 @@ class DetailViewModel {
         return detailData?.detailResult[0].description ?? "Description"
     }
     
-    func getScreenShot() -> [String]? {
+    func getScreenShot() -> [String] {
         let screenshotArr = detailData?.detailResult[0].screenshotUrls ?? []
         self.screenshotArr = screenshotArr
         return screenshotArr
+    }
+    
+    func fetchScreenShot(_ indexPath: IndexPath, _ completion: @escaping (UIImage) -> Void) {
+        let screenshotArr: [String] = getScreenShot()
+        
+        LoadImage().loadImage(screenshotArr[indexPath.row]) { result in
+            switch result {
+            case .success(let image):
+                completion(image)
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
     }
     
     func screenShotCount() -> Int {

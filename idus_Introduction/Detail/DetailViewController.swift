@@ -13,7 +13,7 @@ class DetailViewController: UIViewController {
     var viewModel = DetailViewModel()
     
     private var textViewHeight: CGFloat = 0
-    private let sections: [String] = ["아이디어스", "새로운 기능", "미리보기", "설명"]
+    private let sections: [String] = ["아이디어스", "설명", "새로운 기능", "미리보기"]
     private var contentTableView = UITableView()
     
     override func viewDidLoad() {
@@ -70,21 +70,22 @@ extension DetailViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if indexPath.section == 3 {
+        if indexPath.section == 0 {
             let cell = contentTableView.dequeueReusableCell(withIdentifier: "title", for: indexPath) as! TitleTableViewCell
             cell.setup(viewModel)
             return cell
-        } else if indexPath.section == 2 {
-            let cell = contentTableView.dequeueReusableCell(withIdentifier: "preview", for: indexPath) as! PreviewTableViewCell
+        } else if indexPath.section == 1 {
+            let cell = contentTableView.dequeueReusableCell(withIdentifier: "description", for: indexPath) as! DescriptionTableViewCell
             cell.setup(viewModel)
+            cell.delegate = self
             return cell
-        } else if indexPath.section == 0 {
+        } else if indexPath.section == 2 {
             let cell = contentTableView.dequeueReusableCell(withIdentifier: "description", for: indexPath) as! DescriptionTableViewCell
             cell.setup(viewModel)
             cell.delegate = self
             return cell
         } else {
-            let cell = contentTableView.dequeueReusableCell(withIdentifier: "description", for: indexPath) as! DescriptionTableViewCell
+            let cell = contentTableView.dequeueReusableCell(withIdentifier: "preview", for: indexPath) as! PreviewTableViewCell
             cell.setup(viewModel)
             return cell
         }
@@ -92,13 +93,13 @@ extension DetailViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.section == 0 {
-            return textViewHeight
-        } else if indexPath.section == 2 {
-            return 500
-        } else if indexPath.section == 3 {
-            return 500
-        } else {
             return 100
+        } else if indexPath.section == 1 {
+            return 500
+        } else if indexPath.section == 2 {
+            return 100
+        } else {
+            return 500
         }
     }
 }

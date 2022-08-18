@@ -90,7 +90,6 @@ extension DescriptionTableViewCell {
     private func setupLine() {
         let contentSize = descriptionTextView.contentSize.height - descriptionTextView.textContainerInset.top - descriptionTextView.textContainerInset.bottom
         delegate?.setTextViewHeight(height: contentSize)
-//        let lineCount = contentSize / descriptionTextView.font!.lineHeight
     }
     
     @objc private func touchFoldableButton() {

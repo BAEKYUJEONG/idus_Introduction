@@ -7,16 +7,6 @@
 
 import UIKit
 
-protocol ReusableCell {
-    static var identifier: String { get }
-}
-
-extension ReusableCell {
-    static var identifier: String {
-        return String(describing: self)
-    }
-}
-
 extension UICollectionView {
     func register<T: UICollectionViewCell>(cellType: T.Type) where T: ReusableCell {
         self.register(cellType, forCellWithReuseIdentifier: cellType.identifier)

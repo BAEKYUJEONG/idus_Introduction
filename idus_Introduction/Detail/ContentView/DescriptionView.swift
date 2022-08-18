@@ -59,8 +59,8 @@ class DescriptionView: UIView {
     func setupTextView() {
         descriptionTextView.text = viewModel.getDescription()
         
-        descriptionTextView.textContainer.maximumNumberOfLines = 3
-        descriptionTextView.textContainer.lineBreakMode = .byTruncatingTail
+//        descriptionTextView.textContainer.maximumNumberOfLines = 3
+//        descriptionTextView.textContainer.lineBreakMode = .byTruncatingTail
     }
     
     func setupButton() {

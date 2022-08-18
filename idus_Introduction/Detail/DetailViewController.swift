@@ -52,29 +52,6 @@ extension DetailViewController {
             contentTableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
     }
-    
-//    private func setIconImage() {
-//        LoadImage().loadImage("https://is5-ssl.mzstatic.com/image/thumb/Purple112/v4/f9/6e/ed/f96eed72-72d6-4354-97fa-ee649c21832d/AppIcon-1x_U007emarketing-0-6-0-sRGB-85-220.png/100x100bb.jpg") { result in
-//            switch result {
-//            case .success(let image):
-//                DispatchQueue.main.async {
-//                    self.appImage.image = image
-//                }
-//            case .failure(_):
-//                print("fail")
-//            }
-//        }
-//        self.viewModel.imageSucceed = { image in
-//            self.appImage.image = image
-//        }
-//
-//        NSLayoutConstraint.activate([
-//            appImage.topAnchor.constraint(equalTo: appView.topAnchor, constant: 10),
-//            appImage.leadingAnchor.constraint(equalTo: appView.leadingAnchor, constant: 10),
-//            appImage.bottomAnchor.constraint(equalTo: appView.bottomAnchor, constant: 10),
-//            appImage.heightAnchor.constraint(equalTo: appImage.widthAnchor)
-//        ])
-//    }
 }
 
 extension DetailViewController: UITableViewDelegate, UITableViewDataSource {
@@ -92,12 +69,16 @@ extension DetailViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if indexPath.section == 0 {
+        if indexPath.section == 3 {
             let cell = contentTableView.dequeueReusableCell(withIdentifier: "title", for: indexPath) as! TitleTableViewCell
             cell.setup(viewModel)
             return cell
         } else if indexPath.section == 2 {
             let cell = contentTableView.dequeueReusableCell(withIdentifier: "preview", for: indexPath) as! PreviewTableViewCell
+            cell.setup(viewModel)
+            return cell
+        } else if indexPath.section == 0 {
+            let cell = contentTableView.dequeueReusableCell(withIdentifier: "description", for: indexPath) as! DescriptionTableViewCell
             cell.setup(viewModel)
             return cell
         } else {

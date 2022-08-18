@@ -15,7 +15,6 @@ class DetailViewModel {
     
     func getDetailData(_ detail: Detail) {
         detailData = detail
-        print(detailData)
     }
     
     func getAppIconImage(_ completion: @escaping (UIImage) -> Void) {
@@ -32,8 +31,16 @@ class DetailViewModel {
         }
     }
     
+    func getTitle() -> String {
+        return detailData?.detailResult[0].trackName ?? "아이디어스(idus)"
+    }
+    
+    func getArtistName() -> String {
+        return detailData?.detailResult[0].artistName ?? "Backpackr Inc."
+    }
+    
     func getDescription() -> String {
-        return detailData?.detailResult[0].description ?? "text"
+        return detailData?.detailResult[0].description ?? "Description"
     }
     
     func getScreenShot() -> [String]? {

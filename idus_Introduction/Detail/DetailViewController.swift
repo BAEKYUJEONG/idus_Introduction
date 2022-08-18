@@ -94,7 +94,7 @@ extension DetailViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.section == 0 {
-            return 100
+            return 80
         } else if indexPath.section == 1 {
             return 120
         } else if indexPath.section == 2 {

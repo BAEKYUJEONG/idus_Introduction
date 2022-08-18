@@ -7,7 +7,6 @@
 
 import UIKit
 
-// id: 872469884
 class DetailViewController: UIViewController{
 
     var viewModel = DetailViewModel()
@@ -109,10 +108,6 @@ extension DetailViewController: FoldableDelegate {
     
     func setTextViewHeight(height: CGFloat) {
         textViewHeight = height
-    }
-    
-    func tapFoldableButton(sender: UIButton) {
-        
     }
 }
 

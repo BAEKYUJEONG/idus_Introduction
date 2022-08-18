@@ -7,16 +7,6 @@
 
 import UIKit
 
-protocol ReusableCell {
-    static var identifier: String { get }
-}
-
-extension ReusableCell {
-    static var identifier: String {
-        return String(describing: self)
-    }
-}
-
 extension UICollectionView {
     func register<T: UICollectionViewCell>(cellType: T.Type) where T: ReusableCell {
         self.register(cellType, forCellWithReuseIdentifier: cellType.identifier)
@@ -32,20 +22,15 @@ class PreviewCollectionViewCell: UICollectionViewCell, ReusableCell {
     
     private let previewImage = UIImageView()
     
-    func setup(_ indexPath: IndexPath, _ screenshotArr: [String]?) {
+    func setup(_ indexPath: IndexPath, _ viewModel: DetailViewModel) {
         layout()
-        loadImage(indexPath, screenshotArr ?? [])
+        loadImage(indexPath, viewModel)
     }
     
-    private func loadImage(_ indexPath: IndexPath, _ screenshotArr: [String]) {
-        LoadImage().loadImage(screenshotArr[indexPath.row]) { result in
-            switch result {
-            case .success(let image):
-                DispatchQueue.main.async {
-                    self.previewImage.image = image
-                }
-            case .failure(let error):
-                print(error.localizedDescription)
+    private func loadImage(_ indexPath: IndexPath, _ viewModel: DetailViewModel) {
+        viewModel.fetchScreenShot(indexPath) { image in
+            DispatchQueue.main.async {
+                self.previewImage.image = image
             }
         }
     }

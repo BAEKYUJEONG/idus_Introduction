@@ -16,14 +16,17 @@ struct Detail: Decodable {
 }
 
 struct Results: Decodable {
-    let screenshotUrls: [String]
     let artworkUrl100: String
+    let trackName: String
+    let artistName: String
+    
+    let screenshotUrls: [String]
+    
     /// 4.7563000
     let averageUserRating: Float
     /// 4+
     let trackContentRating: String
     let description: String
-    let trackName: String
     
     let version: String
     let releaseNotes: String

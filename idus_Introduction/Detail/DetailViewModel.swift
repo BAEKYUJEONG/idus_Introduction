@@ -11,37 +11,62 @@ class DetailViewModel {
     
     private var detailData: Detail?
     private var screenshotArr: [String] = []
-    var imageSucceed: (_ image: UIImage) -> () = { image in }
     
     func getDetailData(_ detail: Detail) {
         detailData = detail
-        print(detailData)
     }
     
-    func getAppIconImage() -> UIImage {
+    func getAppIconImage(_ completion: @escaping (UIImage) -> Void) {
         let iconString = detailData!.detailResult[0].artworkUrl100
-        var iconImage = UIImage()
         
         LoadImage().loadImage(iconString) { result in
             switch result {
             case .success(let image):
-                iconImage = image
-                self.imageSucceed(image)
+                completion(image)
             case .failure(_):
-                iconImage = UIImage(systemName: "x.square")!
+                let image = UIImage(systemName: "x.square")!
+                completion(image)
             }
         }
-        return iconImage
+    }
+    
+    func getTitle() -> String {
+        return detailData?.detailResult[0].trackName ?? "아이디어스(idus)"
+    }
+    
+    func getArtistName() -> String {
+        return detailData?.detailResult[0].artistName ?? "Backpackr Inc."
+    }
+    
+    func getVersion() -> String {
+        return detailData?.detailResult[0].version ?? "1.0.0"
+    }
+    
+    func getScript() -> String {
+        return detailData?.detailResult[0].releaseNotes ?? ""
     }
     
     func getDescription() -> String {
-        return detailData?.detailResult[0].description ?? "text"
+        return detailData?.detailResult[0].description ?? "Description"
     }
     
-    func getScreenShot() -> [String]? {
+    func getScreenShot() -> [String] {
         let screenshotArr = detailData?.detailResult[0].screenshotUrls ?? []
         self.screenshotArr = screenshotArr
         return screenshotArr
+    }
+    
+    func fetchScreenShot(_ indexPath: IndexPath, _ completion: @escaping (UIImage) -> Void) {
+        let screenshotArr: [String] = getScreenShot()
+        
+        LoadImage().loadImage(screenshotArr[indexPath.row]) { result in
+            switch result {
+            case .success(let image):
+                completion(image)
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
     }
     
     func screenShotCount() -> Int {

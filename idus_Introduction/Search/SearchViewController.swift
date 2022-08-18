@@ -14,7 +14,7 @@ class SearchViewController: UIViewController {
         let imageView = UIImageView()
         imageView.image = UIImage(named: "idus_icon")
         imageView.clipsToBounds = true
-        imageView.layer.cornerRadius = 30
+        imageView.layer.cornerRadius = 24
         return imageView
     }()
     private var searchBar: UISearchBar = {

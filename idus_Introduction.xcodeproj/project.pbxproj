@@ -30,6 +30,7 @@
 		686E107F28AD011F000497E4 /* UIViewController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 686E107E28AD011F000497E4 /* UIViewController+.swift */; };
 		686E108128AD1245000497E4 /* DescriptionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 686E108028AD1245000497E4 /* DescriptionTableViewCell.swift */; };
 		686E108428AD1689000497E4 /* PreviewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 686E108328AD1689000497E4 /* PreviewTableViewCell.swift */; };
+		686E108628AE1992000497E4 /* TitleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 686E108528AE1992000497E4 /* TitleTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -77,6 +78,7 @@
 		686E107E28AD011F000497E4 /* UIViewController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+.swift"; sourceTree = "<group>"; };
 		686E108028AD1245000497E4 /* DescriptionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionTableViewCell.swift; sourceTree = "<group>"; };
 		686E108328AD1689000497E4 /* PreviewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewTableViewCell.swift; sourceTree = "<group>"; };
+		686E108528AE1992000497E4 /* TitleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -219,6 +221,7 @@
 		686E108228AD131C000497E4 /* ContentCell */ = {
 			isa = PBXGroup;
 			children = (
+				686E108528AE1992000497E4 /* TitleTableViewCell.swift */,
 				686E108328AD1689000497E4 /* PreviewTableViewCell.swift */,
 				686E108028AD1245000497E4 /* DescriptionTableViewCell.swift */,
 			);
@@ -370,6 +373,7 @@
 				686E107F28AD011F000497E4 /* UIViewController+.swift in Sources */,
 				686E107028AB5530000497E4 /* PreviewCollectionViewCell.swift in Sources */,
 				686E106E28AA609D000497E4 /* ContentStackView.swift in Sources */,
+				686E108628AE1992000497E4 /* TitleTableViewCell.swift in Sources */,
 				6831A3B228A7BA760004F713 /* UrlSession+.swift in Sources */,
 				6831A37728A7A1020004F713 /* SceneDelegate.swift in Sources */,
 				686E107828ACBBD9000497E4 /* DescriptionView.swift in Sources */,

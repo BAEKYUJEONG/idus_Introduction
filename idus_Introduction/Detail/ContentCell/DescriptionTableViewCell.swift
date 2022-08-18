@@ -31,12 +31,21 @@ extension UITableView {
 class DescriptionTableViewCell: UITableViewCell, ReusableCell {
     
     private var descriptionTextView = UITextView()
+    private var foldableButton: UIButton = {
+        var button = UIButton()
+        button.backgroundColor = .cyan
+        return button
+    }()
     
     func setup(_ viewModel: DetailViewModel) {
         descriptionTextView.text = viewModel.getDescription()
         descriptionTextView.font = UIFont.systemFont(ofSize: 16)
         
+        descriptionTextView.textContainer.maximumNumberOfLines = 5
+        descriptionTextView.textContainer.lineBreakMode = .byTruncatingTail
+        
         layout()
+        setupButton()
     }
 }
 
@@ -44,7 +53,8 @@ extension DescriptionTableViewCell {
     
     private func layout() {
         [
-            descriptionTextView
+            descriptionTextView,
+            foldableButton
         ].forEach {
             addSubview($0)
             $0.translatesAutoresizingMaskIntoConstraints = false
@@ -54,8 +64,32 @@ extension DescriptionTableViewCell {
         NSLayoutConstraint.activate([
             descriptionTextView.topAnchor.constraint(equalTo: self.topAnchor, constant: inset),
             descriptionTextView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: inset),
-            descriptionTextView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: inset),
-            descriptionTextView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: inset)
+            descriptionTextView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -inset),
+            descriptionTextView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -inset),
+            
+            foldableButton.widthAnchor.constraint(equalToConstant: 40),
+            foldableButton.heightAnchor.constraint(equalToConstant: 20),
+            foldableButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -inset),
+            foldableButton.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -inset)
         ])
+    }
+    
+    private func setupButton() {
+        setupLine()
+        foldableButton.addTarget(self, action: #selector(touchFoldableButton(_:)), for: .touchUpInside)
+    }
+    
+    private func setupLine() {
+        let lineCount = (descriptionTextView.contentSize.height - descriptionTextView.textContainerInset.top - descriptionTextView.textContainerInset.bottom) / descriptionTextView.font!.lineHeight
+    }
+    
+    @objc private func touchFoldableButton(_ sender: UIButton) {
+        if sender.isSelected {
+            descriptionTextView.textContainer.maximumNumberOfLines = 0
+            descriptionTextView.invalidateIntrinsicContentSize()
+        } else {
+            descriptionTextView.textContainer.maximumNumberOfLines = 5
+            descriptionTextView.invalidateIntrinsicContentSize()
+        }
     }
 }

@@ -18,20 +18,18 @@ class DetailViewModel {
         print(detailData)
     }
     
-    func getAppIconImage() -> UIImage {
+    func getAppIconImage(_ completion: @escaping (UIImage) -> Void) {
         let iconString = detailData!.detailResult[0].artworkUrl100
-        var iconImage = UIImage()
         
         LoadImage().loadImage(iconString) { result in
             switch result {
             case .success(let image):
-                iconImage = image
-                self.imageSucceed(image)
+                completion(image)
             case .failure(_):
-                iconImage = UIImage(systemName: "x.square")!
+                let image = UIImage(systemName: "x.square")!
+                completion(image)
             }
         }
-        return iconImage
     }
     
     func getDescription() -> String {

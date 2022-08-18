@@ -37,6 +37,7 @@ class PreviewCollectionViewCell: UICollectionViewCell, ReusableCell {
 }
 
 extension PreviewCollectionViewCell {
+    
     func layout() {
         previewImage.isUserInteractionEnabled = false
         

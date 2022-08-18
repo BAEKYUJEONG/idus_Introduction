@@ -33,6 +33,7 @@ class SearchViewController: UIViewController {
 }
 
 extension SearchViewController {
+    
     private func attribute() {
         searchBar.delegate = self
     }
@@ -90,7 +91,6 @@ extension SearchViewController: UISearchBarDelegate {
             } else {
                 viewModel.getDetail(id)
             }
-            
         }
     }
     

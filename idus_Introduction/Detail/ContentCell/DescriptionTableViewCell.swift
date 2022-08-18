@@ -9,7 +9,6 @@ import UIKit
 
 protocol FoldableDelegate: AnyObject {
     func setTextViewHeight(height: CGFloat)
-    func tapFoldableButton(sender: UIButton)
 }
 
 protocol ReusableCell {
@@ -33,7 +32,7 @@ extension UITableView {
     }
 }
 
-class DescriptionTableViewCell: UITableViewCell, ReusableCell {
+class DescriptionTableViewCell: UITableViewCell {
     
     weak var delegate: FoldableDelegate?
     private var descriptionTextView = UITextView()
@@ -94,7 +93,6 @@ extension DescriptionTableViewCell {
     
     @objc private func touchFoldableButton() {
         foldableButton.isSelected = !foldableButton.isSelected
-        delegate?.tapFoldableButton(sender: foldableButton)
         
         if foldableButton.isSelected {
             descriptionTextView.textContainer.maximumNumberOfLines = 0

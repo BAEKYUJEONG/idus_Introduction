@@ -7,7 +7,7 @@
 
 import UIKit
 
-class TitleTableViewCell: UITableViewCell, ReusableCell {
+class TitleTableViewCell: UITableViewCell {
     
     private var appIconImage = UIImageView()
     private var appTitle = UILabel()

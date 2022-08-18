@@ -11,7 +11,7 @@ protocol ModalDelegate: AnyObject {
     func presentModal(_ vc: UIViewController)
 }
 
-class PreviewTableViewCell: UITableViewCell, ReusableCell {
+class PreviewTableViewCell: UITableViewCell {
     
     weak var delegate: ModalDelegate?
     private var viewModel = DetailViewModel()

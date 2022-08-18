@@ -9,18 +9,30 @@ import UIKit
 
 class PreviewModalViewController: UIViewController {
     
+    weak var delegate: ModalDelegate?
     var previewImage = UIImageView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         layout()
+        setupDismissModal()
     }
     
     func fetchImage(_ indexPath: IndexPath, _ viewModel: DetailViewModel) {
         viewModel.fetchScreenShot(indexPath) { image in
             self.previewImage.image = image
         }
+    }
+    
+    func setupDismissModal() {
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissModal))
+        self.previewImage.addGestureRecognizer(tapGesture)
+        previewImage.isUserInteractionEnabled = true
+    }
+    
+    @objc func dismissModal() {
+        self.dismiss(animated: true)
     }
 }
 

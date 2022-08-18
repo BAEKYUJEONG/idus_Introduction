@@ -74,7 +74,5 @@ extension PreviewTableViewCell: UICollectionViewDelegate, UICollectionViewDataSo
         vc.fetchImage(indexPath, viewModel)
         vc.modalPresentationStyle = UIModalPresentationStyle.fullScreen
         delegate?.presentModal(vc)
-        
-        print(indexPath)
     }
 }

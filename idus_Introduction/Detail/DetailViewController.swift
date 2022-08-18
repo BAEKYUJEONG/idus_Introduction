@@ -13,7 +13,7 @@ class DetailViewController: UIViewController{
     var viewModel = DetailViewModel()
     
     private var textViewHeight: CGFloat = 0
-    private let sections: [String] = ["아이디어스", "설명", "새로운 기능", "미리보기"]
+    private let sections: [String] = ["아이디어스", "새로운 기능", "설명", "미리보기"]
     private var contentTableView = UITableView()
     
     override func viewDidLoad() {
@@ -34,6 +34,7 @@ extension DetailViewController {
         contentTableView.delegate = self
         contentTableView.dataSource = self
         contentTableView.register(TitleTableViewCell.self, forCellReuseIdentifier: "title")
+        contentTableView.register(NewFuncTableViewCell.self, forCellReuseIdentifier: "newFunc")
         contentTableView.register(PreviewTableViewCell.self, forCellReuseIdentifier: "preview")
         contentTableView.register(DescriptionTableViewCell.self, forCellReuseIdentifier: "description")
     }
@@ -75,9 +76,8 @@ extension DetailViewController: UITableViewDelegate, UITableViewDataSource {
             cell.setup(viewModel)
             return cell
         } else if indexPath.section == 1 {
-            let cell = contentTableView.dequeueReusableCell(withIdentifier: "description", for: indexPath) as! DescriptionTableViewCell
+            let cell = contentTableView.dequeueReusableCell(withIdentifier: "newFunc", for: indexPath) as! NewFuncTableViewCell
             cell.setup(viewModel)
-            cell.delegate = self
             return cell
         } else if indexPath.section == 2 {
             let cell = contentTableView.dequeueReusableCell(withIdentifier: "description", for: indexPath) as! DescriptionTableViewCell
@@ -96,9 +96,9 @@ extension DetailViewController: UITableViewDelegate, UITableViewDataSource {
         if indexPath.section == 0 {
             return 100
         } else if indexPath.section == 1 {
-            return 500
+            return 120
         } else if indexPath.section == 2 {
-            return 100
+            return 500
         } else {
             return 500
         }

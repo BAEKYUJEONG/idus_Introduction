@@ -38,6 +38,14 @@ class DetailViewModel {
         return detailData?.detailResult[0].artistName ?? "Backpackr Inc."
     }
     
+    func getVersion() -> String {
+        return detailData?.detailResult[0].version ?? "1.0.0"
+    }
+    
+    func getScript() -> String {
+        return detailData?.detailResult[0].releaseNotes ?? ""
+    }
+    
     func getDescription() -> String {
         return detailData?.detailResult[0].description ?? "Description"
     }

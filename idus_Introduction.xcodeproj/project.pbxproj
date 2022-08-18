@@ -30,6 +30,7 @@
 		686E108428AD1689000497E4 /* PreviewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 686E108328AD1689000497E4 /* PreviewTableViewCell.swift */; };
 		686E108628AE1992000497E4 /* TitleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 686E108528AE1992000497E4 /* TitleTableViewCell.swift */; };
 		68A94AFB28AE57840076D381 /* PreviewModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68A94AFA28AE57840076D381 /* PreviewModalViewController.swift */; };
+		68A94AFD28AE64D90076D381 /* NewFuncTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68A94AFC28AE64D90076D381 /* NewFuncTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -77,6 +78,7 @@
 		686E108328AD1689000497E4 /* PreviewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewTableViewCell.swift; sourceTree = "<group>"; };
 		686E108528AE1992000497E4 /* TitleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleTableViewCell.swift; sourceTree = "<group>"; };
 		68A94AFA28AE57840076D381 /* PreviewModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewModalViewController.swift; sourceTree = "<group>"; };
+		68A94AFC28AE64D90076D381 /* NewFuncTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewFuncTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -210,6 +212,7 @@
 			isa = PBXGroup;
 			children = (
 				686E108528AE1992000497E4 /* TitleTableViewCell.swift */,
+				68A94AFC28AE64D90076D381 /* NewFuncTableViewCell.swift */,
 				686E108328AD1689000497E4 /* PreviewTableViewCell.swift */,
 				686E106F28AB5530000497E4 /* PreviewCollectionViewCell.swift */,
 				686E108028AD1245000497E4 /* DescriptionTableViewCell.swift */,
@@ -359,6 +362,7 @@
 				6831A3BA28A80DE00004F713 /* DetailViewController.swift in Sources */,
 				6831A37528A7A1020004F713 /* AppDelegate.swift in Sources */,
 				6831A3B528A7BD020004F713 /* URL+.swift in Sources */,
+				68A94AFD28AE64D90076D381 /* NewFuncTableViewCell.swift in Sources */,
 				6831A3AB28A7AE4F0004F713 /* DetailAPIService.swift in Sources */,
 				6831A3AE28A7B1980004F713 /* Detail.swift in Sources */,
 				6831A3A928A7ADF30004F713 /* LoadImage.swift in Sources */,

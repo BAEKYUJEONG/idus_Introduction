@@ -12,6 +12,7 @@ class DetailViewController: UIViewController {
 
     var viewModel = DetailViewModel()
     
+    private var textViewHeight: CGFloat = 0
     private let sections: [String] = ["아이디어스", "새로운 기능", "미리보기", "설명"]
     private var contentTableView = UITableView()
     
@@ -80,6 +81,7 @@ extension DetailViewController: UITableViewDelegate, UITableViewDataSource {
         } else if indexPath.section == 0 {
             let cell = contentTableView.dequeueReusableCell(withIdentifier: "description", for: indexPath) as! DescriptionTableViewCell
             cell.setup(viewModel)
+            cell.delegate = self
             return cell
         } else {
             let cell = contentTableView.dequeueReusableCell(withIdentifier: "description", for: indexPath) as! DescriptionTableViewCell
@@ -89,12 +91,25 @@ extension DetailViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if indexPath.section == 2 {
+        if indexPath.section == 0 {
+            return textViewHeight
+        } else if indexPath.section == 2 {
             return 500
         } else if indexPath.section == 3 {
             return 500
         } else {
             return 100
         }
+    }
+}
+
+extension DetailViewController: FoldableDelegate {
+    
+    func setTextViewHeight(height: CGFloat) {
+        textViewHeight = height
+    }
+    
+    func tapFoldableButton(sender: UIButton) {
+        
     }
 }
